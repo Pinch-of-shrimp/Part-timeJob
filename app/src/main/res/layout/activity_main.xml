@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.example.wkg.part_timejob.MainActivity">
+<!--***************
+    原示例文件
+    *************/-->
+<!--*****
+  Add new layout of BottomNavigationBar
+  create by wkg
+  Start
+  *****-->
+    <!--建立fragment-->
+    <FrameLayout
+        android:id="@+id/fragment_containt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bottom_navigation_bar"
+        android:background="@color/gray_cc">
+    </FrameLayout>
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+    </com.ashokvarma.bottomnavigation.BottomNavigationBar>
+
+
+
+    <!--    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/text"
+            android:text="wkgkwkg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"> </LinearLayout>-->
+    <!--***
+     Add end
+     ***-->
+</RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!--首行的东西-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="120dip">
+        <!--    android:layout_gravity="center_vertical"
+        android:background=""
+        -->
+
+        <com.example.wkg.part_timejob.Splash.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/circleImageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/test"
+            app:border_width="2dp"
+            app:border_color="#ccc"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            />
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登录/注册"
+                android:textColor="@color/mediumblue"
+                android:textSize="17.0dip"
+                android:layout_marginLeft="30dip"
+                android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <!--背景的修改background
+        recycleView 其中recycleView Id 是recycleview_person -->
+    <!--
+    <android.support.v7.app.AlertController.RecycleListView
+        android:id="@+id/recycleview_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/crimson">
+    </android.support.v7.app.AlertController.RecycleListView>
+    -->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_group_one"
+        android:background="@color/white"
+        android:layout_marginTop="30dp">
+    </ListView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_group_two"
+        android:background="@color/white"
+        android:layout_marginTop="30dp">
+    </ListView>
+</LinearLayout>
