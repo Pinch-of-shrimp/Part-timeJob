@@ -3,6 +3,8 @@ package com.example.wkg.part_timejob.Fragment_main;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +19,20 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by WKG on 2017/6/24.
  */
 
 public class Fragment_main extends Fragment {
+    /**
+     * Created by WKG on 2017/7/1.
+     */
+
+    private List<fmain> fmainList=new ArrayList<>();
+
+
     private Banner banner;
     private ArrayList<Integer> list_path;
     private ArrayList<String> list_title;
@@ -50,6 +60,16 @@ public class Fragment_main extends Fragment {
         }
         aMap.setMyLocationStyle(myLocationStyle);
         aMap.setMyLocationEnabled(true);
+        /*
+        实现内容
+        create by wkg 7.1
+         */
+        Initmian_item();
+        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.fmain_recycler);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        fmainAdapter adapter=new fmainAdapter(fmainList);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -100,5 +120,18 @@ public class Fragment_main extends Fragment {
         banner.isAutoPlay(true);
         banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.start();
+    }
+    private void  Initmian_item(){
+        for (int i=0;i<4;i++)
+        {
+            fmain item1=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
+            fmain item2=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
+            fmain item3=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
+            fmain item4=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
+            fmainList.add(item1);
+            fmainList.add(item2);
+            fmainList.add(item3);
+            fmainList.add(item4);
+        }
     }
 }
