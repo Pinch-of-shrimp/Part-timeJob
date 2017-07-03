@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         pref=getPreferences(0);
         fl_contain= (FrameLayout) findViewById(R.id.fragment_containt);
         initBottomNavigationBar();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_containt,new Fragment_main()).commit();
         initJmessage();
 
 

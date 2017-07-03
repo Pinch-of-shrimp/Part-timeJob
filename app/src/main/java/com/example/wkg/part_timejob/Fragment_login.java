@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.util.prefs.Preferences;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.CreateGroupCallback;
+import cn.jpush.im.api.BasicCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -213,8 +215,9 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
                 String email=et_email.getText().toString();
                 String password=et_password.getText().toString();
                 if(email!=null&&password!=null) {
-                    loginProcess(email, password);
                     LoginInJmessgae(email,password);
+                    loginProcess(email, password);
+
                 }
                 else
                     Toast.makeText(getContext(),"输入有效的密码或邮箱",Toast.LENGTH_SHORT).show();
@@ -274,20 +277,21 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 ServerResponse resp=response.body();
-                if(resp!=null)
-                    Toast.makeText(getContext(),resp.getMessage(),Toast.LENGTH_SHORT).show();
+                if(resp!=null) {
+                    Toast.makeText(getContext(), resp.getMessage(), Toast.LENGTH_SHORT).show();
+                    if(resp.getResult().equals(Constants.SUCCESS))
+                    {
+                        SharedPreferences.Editor editor=pref.edit();
+                        editor.putBoolean(Constants.IS_LOGGED_IN,true);
+                        editor.putString(Constants.EMAIL,resp.getUser().getEmail());
+                        editor.putString(Constants.NAME,resp.getUser().getName());
+                        editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnqiue_id());
+                        editor.apply();
+                        startActivity(new Intent(getContext(),MainActivity.class));
+                    }
+                }
                 else
                     Toast.makeText(getContext(),"the body is null",Toast.LENGTH_SHORT).show();
-                if(resp.getResult().equals(Constants.SUCCESS))
-                {
-                    SharedPreferences.Editor editor=pref.edit();
-                    editor.putBoolean(Constants.IS_LOGGED_IN,true);
-                    editor.putString(Constants.EMAIL,resp.getUser().getEmail());
-                    editor.putString(Constants.NAME,resp.getUser().getName());
-                    editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnqiue_id());
-                    editor.apply();
-                    startActivity(new Intent(getContext(),MainActivity.class));
-                }
 
             }
 
@@ -334,10 +338,10 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
     }
     public void LoginInJmessgae(String name,String password)
     {
-        JMessageClient.login(name, password, new CreateGroupCallback() {
+        JMessageClient.login(name, password, new BasicCallback() {
             @Override
-            public void gotResult(int i, String s, long l) {
-                Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+            public void gotResult(int i, String s) {
+                Toast.makeText(getContext(),s,Toast.LENGTH_SHORT);
             }
         });
     }

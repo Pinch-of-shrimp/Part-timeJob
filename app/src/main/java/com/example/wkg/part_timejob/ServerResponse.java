@@ -14,7 +14,19 @@ public class ServerResponse {
     private ArrayList<Job> hotJob;
     private ArrayList<Job>nearbyJob;
     private ArrayList<Job>allJob;
+    private ArrayList<Job>weekendJob;
+    private ArrayList<Job>recommendJob;
    // private String hotJob;
+
+    public ArrayList<Job> getRecommendJob() {
+        return recommendJob;
+    }
+
+    public ArrayList<Job> getWeekendJob() {
+        return weekendJob;
+    }
+
+    public ArrayList<Job>getAllJob(){return allJob;}
     public String getResult()
     {
         return result;

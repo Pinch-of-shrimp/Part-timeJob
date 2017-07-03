@@ -2,6 +2,7 @@ package com.example.wkg.part_timejob;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -54,7 +55,7 @@ public class Fragment_Conversation extends Fragment {
     private  conversation_rv_adapter adapter;
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_conversation,container,false);
         rv_conversation= (RecyclerView) view.findViewById(R.id.rv_conversation);
         tb_conversation= (Toolbar) view.findViewById(R.id.tb_conversation);
@@ -64,9 +65,8 @@ public class Fragment_Conversation extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(tb_conversation);
         adapter=new conversation_rv_adapter(getContext());
         adapter.setArrayList(datas);
-        show_rv_adpter=new conversationShow_rv_adpter(data_show_rv,getActivity(),null);
+        show_rv_adpter=new conversationShow_rv_adpter(data_show_rv,getActivity(),"",getContext());
         JMessageClient.registerEventReceiver(this);
-        //ContactManager.acceptInvitation();
         overseeTheFriend();
         rv_conversation.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_conversation.setAdapter(adapter);
@@ -88,7 +88,11 @@ public class Fragment_Conversation extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 //Toast.makeText(getContext(),"点击了:"+position,Toast.LENGTH_SHORT).show();
-                showConversationdia(datas.get(position).getInfo());
+                //showConversationdia(datas.get(position).getInfo());
+                Intent intent=new Intent(getActivity(),Activity_other_things.class);
+                intent.putExtra("type","comunicate");
+                ((application)getActivity().getApplication()).setInfo(datas.get(position).getInfo());
+                startActivity(intent);
             }
         });
         return view;

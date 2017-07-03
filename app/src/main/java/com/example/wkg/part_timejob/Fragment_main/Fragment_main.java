@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
@@ -20,6 +21,7 @@ import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.MyLocationStyleCreator;
 import com.example.wkg.part_timejob.Activity_MainMap;
+import com.example.wkg.part_timejob.Activity_other_things;
 import com.example.wkg.part_timejob.Constants;
 import com.example.wkg.part_timejob.Job;
 import com.example.wkg.part_timejob.R;
@@ -45,7 +47,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by WKG on 2017/6/24.
  */
 
-public class Fragment_main extends Fragment {
+public class Fragment_main extends Fragment implements View.OnClickListener {
     /**
      * Created by WKG on 2017/7/1.
      */
@@ -55,12 +57,24 @@ public class Fragment_main extends Fragment {
     private Banner banner;
     private ArrayList<Integer> list_path;
     private ArrayList<String> list_title;
+    private Button btn_nearjob;
+    private Button btn_hotjob;
+    private Button btn_studentjob;
+    private Button btn_weekendjob;
     fmainAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_main,container,false);
         banner = (Banner)view.findViewById(R.id.banner);
+        btn_hotjob= (Button) view.findViewById(R.id.btn_mainpage_new);
+        btn_nearjob= (Button) view.findViewById(R.id.btn_mainpage_nearby);
+        btn_studentjob= (Button) view.findViewById(R.id.btn_mainpage_stu);
+        btn_weekendjob= (Button) view.findViewById(R.id.btn_mainpage_week);
+        btn_hotjob.setOnClickListener(this);
+        btn_nearjob.setOnClickListener(this);
+        btn_weekendjob.setOnClickListener(this);
+        btn_studentjob.setOnClickListener(this);
         toolbar= (Toolbar) view.findViewById(R.id.tb_mainfragment);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.document);
@@ -70,14 +84,13 @@ public class Fragment_main extends Fragment {
                 startActivity(new Intent(getActivity(), Activity_MainMap.class));
             }
         });
-        getdataProcess();
+        getdataProcess("重庆");
         InitData();
 
         /*
         实现内容
         create by wkg 7.1
          */
-        Initmian_item();
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.fmain_recycler);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -87,20 +100,22 @@ public class Fragment_main extends Fragment {
 
         return view;
     }
-    void getdataProcess()
+    public void getdataProcess(String city)
     {
         Retrofit retrofit =new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         RequestInterface_infor requestInterface=retrofit.create(RequestInterface_infor.class);
         User user=new User();
         ServerRequest request=new ServerRequest();
         request.setOperation(Constants.OPEARTIONALLJIOB);
+        request.setCity("重庆市");
+        request.setUser(user);
         Call<ServerResponse>responseCall=requestInterface.operation(request);
         responseCall.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 ServerResponse resp=response.body();
                 if(resp!=null) {
-                    ArrayList<Job> data_job= resp.getCity();
+                    ArrayList<Job> data_job= resp.getAllJob();
                     if(data_job!=null) {
                         for (int i = 0; i < data_job.size(); i++)
                             adapter.addData(data_job.get(i));
@@ -162,17 +177,32 @@ public class Fragment_main extends Fragment {
         banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.start();
     }
-    private void  Initmian_item(){
-        for (int i=0;i<4;i++)
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
         {
-            fmain item1=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
-            fmain item2=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
-            fmain item3=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
-            fmain item4=new fmain("麦当劳","沙坪坝","6:00-8:00","100元/天","日结");
-            fmainList.add(item1);
-            fmainList.add(item2);
-            fmainList.add(item3);
-            fmainList.add(item4);
+            case R.id.btn_mainpage_new:
+                Intent intent=new Intent(getActivity(), Activity_other_things.class);
+                intent.putExtra("type","hotJob");
+                startActivity(intent);
+                break;
+            case R.id.btn_mainpage_nearby:
+                startActivity(new Intent(getActivity(), Activity_MainMap.class));
+                break;
+            case R.id.btn_mainpage_stu:
+                Intent intent2=new Intent(getActivity(), Activity_other_things.class);
+                intent2.putExtra("type","studentJob");
+                startActivity(intent2);
+                break;
+            case R.id.btn_mainpage_week:
+                Intent intent3=new Intent(getActivity(), Activity_other_things.class);
+                intent3.putExtra("type","weekendjob");
+                startActivity(intent3);
+                break;
+            default:
+                break;
         }
+
     }
 }

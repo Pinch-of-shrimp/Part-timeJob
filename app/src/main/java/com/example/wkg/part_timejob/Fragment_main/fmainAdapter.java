@@ -36,7 +36,7 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
             jobplace=(TextView)itemView.findViewById(R.id.jobplace);
             jobtime=(TextView)itemView.findViewById(R.id.jobtime);
             jobsalary=(TextView)itemView.findViewById(R.id.jobsalary);
-            jobgettype=(TextView)itemView.findViewById(R.id.jobsalary);
+            jobgettype=(TextView)itemView.findViewById(R.id.jobgettype);
         }
     }
     public fmainAdapter(List<fmain> List)
@@ -82,7 +82,7 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
     }
     public void addData(Job job)
     {
-        fmain data=new fmain(job.getJob(),job.getCity(),job.getWorktime(),job.getSalary(),job.getWorktype());
+        fmain data=new fmain(job.getJob(),job.getCity(),job.getStartdate()+"-"+job.getEnddate(),job.getSalary()+"元",job.getSalarytype());
         fmainList.add(data);
         notifyItemInserted(fmainList.size());
     }
