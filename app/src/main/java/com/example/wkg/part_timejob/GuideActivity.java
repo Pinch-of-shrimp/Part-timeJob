@@ -67,7 +67,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
         for (int i = 0;i<size;i++){
             iv_point = new ImageView(this);
             iv_point.setLayoutParams(new ViewGroup.LayoutParams(20,20));
-            iv_point.setPadding(30,0,30,0);//left,top,right,bottom
+            iv_point.setPadding(0,0,0,0);//left,top,right,bottom
             ivPointArray[i] = iv_point;
             //第一个页面需要设置为选中状态，这里采用两张不同的图片
             if (i == 0){
@@ -91,7 +91,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
     private void initViewPager() {
         vp = (ViewPager) findViewById(R.id.guide_vp);
         //实例化图片资源
-        imageIdArray = new int[]{R.drawable.test, R.drawable.test, R.drawable.test};
+        imageIdArray = new int[]{R.drawable.guide_one, R.drawable.guifde_two, R.drawable.guifde_three,R.drawable.guifde_four};
         viewList = new ArrayList<>();
         //获取一个Layout参数，设置为全屏
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

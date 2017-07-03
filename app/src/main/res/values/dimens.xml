@@ -1,5 +1,54 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="bottombar_height">48.0dip</dimen>
+    <dimen name="browser_progress_height">3.0dip</dimen>
+    <dimen name="case_item_margin_topbottom">10.0dip</dimen>
+    <dimen name="case_item_marginleft">40.0dip</dimen>
+    <dimen name="case_item_size">50.0dip</dimen>
+    <dimen name="case_item_text_size">12.0sp</dimen>
+    <dimen name="footer_height">90.0dip</dimen>
+    <dimen name="footer_padding">10.0dip</dimen>
+    <dimen name="g_item_height_large">80.0dip</dimen>
+    <dimen name="g_item_height_medium">60.0dip</dimen>
+    <dimen name="g_item_height_small">46.0dip</dimen>
+    <dimen name="g_item_height_x_large">100.0dip</dimen>
+    <dimen name="g_title_bar_margin">12.0dip</dimen>
+    <dimen name="g_widget_margin">8.0dip</dimen>
+    <dimen name="g_widget_margin_2x">16.0dip</dimen>
+    <dimen name="guss_me_like_height">50.0dip</dimen>
+    <dimen name="header_height">60.0dip</dimen>
+    <dimen name="list_padding">10.0dip</dimen>
+    <dimen name="main_index_margin">12.0dip</dimen>
+    <dimen name="main_tab_item_text_size">10.0dip</dimen>
+    <dimen name="post_list_image_size">55.0dip</dimen>
+    <dimen name="rc_conversation_item_data_size">12.0sp</dimen>
+    <dimen name="rc_conversation_item_name_size">16.0sp</dimen>
+    <dimen name="rc_message_send_status_image_size">15.0dip</dimen>
+    <dimen name="set_padding">7.0dip</dimen>
+    <dimen name="shadow_width">15.0dip</dimen>
+    <item type="dimen" name="simple_dialog_line_height">@dimen/title_bar_line_height</item>
+    <item type="dimen" name="simple_dialog_line_width">@dimen/title_bar_line_height</item>
+    <dimen name="slidingmenu_offset">60.0dip</dimen>
+    <dimen name="tab_host_padding">73.0dip</dimen>
+    <dimen name="text_size_10sp">10.0sp</dimen>
+    <dimen name="text_size_12sp">12.0sp</dimen>
+    <dimen name="text_size_14sp">14.0sp</dimen>
+    <dimen name="text_size_15sp">15.0sp</dimen>
+    <dimen name="text_size_16sp">16.0sp</dimen>
+    <dimen name="text_size_18sp">18.0sp</dimen>
+    <dimen name="text_size_20sp">20.0sp</dimen>
+    <dimen name="text_size_22sp">22.0sp</dimen>
+    <dimen name="text_size_24sp">24.0sp</dimen>
+    <dimen name="text_size_48sp">48.0sp</dimen>
+    <dimen name="text_size_big">10.0sp</dimen>
+    <dimen name="text_size_middle">16.0sp</dimen>
+    <dimen name="text_size_middle2">18.0sp</dimen>
+    <dimen name="text_size_small">10.0sp</dimen>
+    <dimen name="text_size_small2">12.0sp</dimen>
+    <dimen name="textbtnsize">16.0sp</dimen>
+    <dimen name="textsize">16.0sp</dimen>
+    <dimen name="titilebar_height">48.0dip</dimen>
+    <dimen name="titilebar_padding">18.0dip</dimen>
+    <dimen name="title_bar_line_height">1.0px</dimen>
+    <dimen name="titlebar_back_container_min_width">30.0dip</dimen>
 </resources>

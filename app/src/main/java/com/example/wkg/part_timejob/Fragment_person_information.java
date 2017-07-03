@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -93,18 +94,46 @@ public class Fragment_person_information extends Fragment implements OnClickList
 //            data2.add(group_two[i]);
 //        lv_group_one.setAdapter(new ListAdapter(data1,getContext()));
 //        lv_group_two.setAdapter(new ListAdapter(data2,getContext()));
-//        lv_group_one.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getContext(),"the position is :"+position,Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        lv_group_two.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getContext(),"the position is:"+position,Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        lv_group_one.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        Intent intent=new Intent(getActivity(),Activity_other_things.class);
+                        intent.putExtra("type","myintruduce");
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+       lv_group_two.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        Intent intent=new Intent(getActivity(),Activity_other_things.class);
+                        intent.putExtra("type","feedback");
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
+           }
+        });
 
     }
     @Override

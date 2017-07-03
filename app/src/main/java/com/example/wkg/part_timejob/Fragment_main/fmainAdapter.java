@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wkg.part_timejob.Job;
 import com.example.wkg.part_timejob.R;
 
 import java.util.List;
@@ -78,6 +79,12 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return fmainList.size();
+    }
+    public void addData(Job job)
+    {
+        fmain data=new fmain(job.getJob(),job.getCity(),job.getWorktime(),job.getSalary(),job.getWorktype());
+        fmainList.add(data);
+        notifyItemInserted(fmainList.size());
     }
 
 

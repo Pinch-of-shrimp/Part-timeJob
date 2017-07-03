@@ -4,48 +4,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="110dp"
+    android:layout_marginEnd="5dp">
+
     <TextView
         android:id="@+id/jobname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="zhegeceshi"/>
+        android:text="麦当劳兼职"
+        android:textSize="24dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/img_jobplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mainpage_position"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            />
         <TextView
             android:id="@+id/jobplace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceshi "
-            android:layout_marginLeft="10dp"/>
+            android:text="沙坪坝"
+            android:layout_marginLeft="5dp"/>
+        <ImageView
+            android:id="@+id/img_jobtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mainpage_time"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            />
         <TextView
             android:id="@+id/jobtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceshi "
-            android:layout_marginLeft="15dp"/>
+            android:text="2017.06.09-2017.08.31"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp">
         <TextView
             android:id="@+id/jobsalary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceshi "
+            android:text="150元/天"
+            android:layout_gravity="center_vertical"
+            android:textSize="14dp"
             android:layout_marginLeft="10dp"/>
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="1dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/gray_8f"
+            android:layout_marginLeft="15dp"/>
         <TextView
             android:id="@+id/jobgettype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceshi "
+            android:layout_gravity="center_vertical"
+            android:text="日结"
             android:layout_marginLeft="15dp"/>
     </LinearLayout>
 </LinearLayout>

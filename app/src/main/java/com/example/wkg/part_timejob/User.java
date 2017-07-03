@@ -13,6 +13,12 @@ public class User {
     private String new_password;
     private String new_password_verify;
     private String code;
+    private String city;
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public void setPassword_new_veity(String n){new_password_verify=n;}
     public String getName()
     {

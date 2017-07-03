@@ -22,8 +22,11 @@ public class Constants {
     public static final int RECIVERIMAGE=2;
     public static final int SENDTEXT=3;
     public static final int SENDIMAGE=4;
-    public static final String SEARCHINMAIN="searchinmain";
-    public static final String SEARCHINALL="searchall";
+    public static final String OPERATIONHOTJOB="hotJob";
+    public static final String OPERATIONNEARJOB="nearJob";
+    public static final String OPERATIONWEEKENDJOB="weekendJob";
+    public static final String OPERATIONTIONRECOMMONDJOB="recommendJob";
+    public static final String OPEARTIONALLJIOB="allJob";
     public static final String UNIQUE_ID = "unique_id";
     public static final String TAG = "Learn2Crack";
 }
