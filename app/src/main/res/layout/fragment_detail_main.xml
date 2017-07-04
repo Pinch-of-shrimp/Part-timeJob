@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/mainpage_jobitem"></include>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="职位描述："
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:id="@+id/tv_detial_descrip"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="薪酬福利："
+            android:textSize="26dp"
+            android:textColor="@color/black" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:id="@+id/tv_detial_salary"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="工作时间："
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:id="@+id/tv_detial_jobtime"
+            android:textSize="18dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="工作地点："
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/location48"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:id="@+id/tv_detial_jobpalce"
+                android:textSize="18dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="面试地点："
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textSize="18dp"
+            android:id="@+id/tv_detial_interview"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="更多职位："
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_fmain_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/job_detail_bottom_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bottombar_height">
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:id="@+id/button_favorite"
+                android:layout_width="90.0dip"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/iv_button_favorite_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_favorite_not_added" />
+                <TextView
+                    android:textSize="14.0sp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/button_favorite_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0dip"
+                    android:text="收藏" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_gravity="center_vertical"
+                android:id="@+id/button_divider"
+                android:background="@color/filter_menu_divider_color"
+                android:visibility="gone"
+                android:layout_width="1.0px"
+                android:layout_height="30.0dip" />
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/button_call"
+                android:visibility="visible"
+                android:layout_width="90.0dip"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/button_call_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_consult" />
+                <TextView
+                    android:textSize="14.0sp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/tv_contact_company_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6.0dip"
+                    android:text="联系商家" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_gravity="center_vertical"
+                android:id="@+id/button_divider2"
+                android:background="@color/filter_menu_divider_color"
+                android:visibility="gone"
+                android:layout_width="1.0px"
+                android:layout_height="30.0dip" />
+            <Button
+                android:textSize="16.0dip"
+                android:textColor="@drawable/apply_button_text_selector"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/btn_button_apply_job"
+                android:background="@drawable/apply_job_button_selector"
+                android:layout_width="180.0dip"
+                android:layout_height="fill_parent"
+                android:text="报名参加"
+                android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+

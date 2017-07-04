@@ -1,5 +1,6 @@
 package com.example.wkg.part_timejob.Fragment_main;
 
+import android.app.Application;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
@@ -30,6 +32,7 @@ import com.example.wkg.part_timejob.RequestInterface_infor;
 import com.example.wkg.part_timejob.ServerRequest;
 import com.example.wkg.part_timejob.ServerResponse;
 import com.example.wkg.part_timejob.User;
+import com.example.wkg.part_timejob.application;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -47,13 +50,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by WKG on 2017/6/24.
  */
 
-public class Fragment_main extends Fragment implements View.OnClickListener {
+public class Fragment_main extends Fragment implements View.OnClickListener, fmainAdapter.MyItemClickListener {
     /**
      * Created by WKG on 2017/7/1.
      */
 
     private List<fmain> fmainList=new ArrayList<>();
     private Toolbar toolbar;
+    ArrayList<Job> data_job;
+    private EditText et_search;
     private Banner banner;
     private ArrayList<Integer> list_path;
     private ArrayList<String> list_title;
@@ -71,19 +76,15 @@ public class Fragment_main extends Fragment implements View.OnClickListener {
         btn_nearjob= (Button) view.findViewById(R.id.btn_mainpage_nearby);
         btn_studentjob= (Button) view.findViewById(R.id.btn_mainpage_stu);
         btn_weekendjob= (Button) view.findViewById(R.id.btn_mainpage_week);
+        et_search= (EditText) view.findViewById(R.id.et_search_to_fragment_search);
+        et_search.setOnClickListener(this);
         btn_hotjob.setOnClickListener(this);
         btn_nearjob.setOnClickListener(this);
         btn_weekendjob.setOnClickListener(this);
         btn_studentjob.setOnClickListener(this);
         toolbar= (Toolbar) view.findViewById(R.id.tb_mainfragment);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.mipmap.document);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), Activity_MainMap.class));
-            }
-        });
+        toolbar.setTitle("");
         getdataProcess("重庆");
         InitData();
 
@@ -97,6 +98,8 @@ public class Fragment_main extends Fragment implements View.OnClickListener {
         adapter=new fmainAdapter(fmainList);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+        adapter.setmItemClickListener(this);
+
 
         return view;
     }
@@ -115,7 +118,7 @@ public class Fragment_main extends Fragment implements View.OnClickListener {
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                 ServerResponse resp=response.body();
                 if(resp!=null) {
-                    ArrayList<Job> data_job= resp.getAllJob();
+                    data_job= resp.getAllJob();
                     if(data_job!=null) {
                         for (int i = 0; i < data_job.size(); i++)
                             adapter.addData(data_job.get(i));
@@ -200,9 +203,26 @@ public class Fragment_main extends Fragment implements View.OnClickListener {
                 intent3.putExtra("type","weekendjob");
                 startActivity(intent3);
                 break;
+            case R.id.et_search_to_fragment_search:
+                Intent intent4=new Intent(getActivity(),Activity_other_things.class);
+                intent4.putExtra("type","search");
+                startActivity(intent4);
+                break;
             default:
                 break;
         }
 
+    }
+
+    @Override
+    public void onItemClick(View view, int postion) {
+        if(data_job!=null)
+        {
+            ((application)getActivity().getApplication()).setList(data_job);
+            ((application)getActivity().getApplication()).setPostion(postion);
+            Intent intent=new Intent(getActivity(),Activity_other_things.class);
+            intent.putExtra("type","detail_main");
+            startActivity(intent);
+        }
     }
 }

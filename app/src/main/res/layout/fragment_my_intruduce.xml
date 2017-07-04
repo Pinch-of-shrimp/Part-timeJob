@@ -338,6 +338,11 @@
                     android:hint="请输入内容(200字以内)"
                     android:maxLength="200" />
             </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提交"
+                android:background="@drawable/login_btn"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

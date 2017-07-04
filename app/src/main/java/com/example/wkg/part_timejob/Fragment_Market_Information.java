@@ -40,7 +40,7 @@ public class Fragment_Market_Information extends Fragment {
                         break;
                     case R.id.rb_classify:
                         Toast.makeText(getContext(),"this is the graph fragment",Toast.LENGTH_SHORT).show();
-                        getFragmentManager().beginTransaction().replace(R.id.Chirld_containt,new Fragment_Web()).commit();
+                        //getFragmentManager().beginTransaction().replace(R.id.Chirld_containt,new Fragment_Web()).commit();
                         break;
                     default:
                         break;

@@ -2,6 +2,7 @@ package com.example.wkg.part_timejob;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,21 @@ import cn.jpush.im.android.api.JMessageClient;
 public class MainActivity extends AppCompatActivity {
     private FrameLayout fl_contain;
     private SharedPreferences pref;
+    Fragment f4;
     /*
     变量声明
      */
     private BottomNavigationBar bottom_navigation_bar;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(f4!=null) {
+            f4.onActivityResult(requestCode, resultCode, data);
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,16 +99,17 @@ public class MainActivity extends AppCompatActivity {
                         ft.replace(R.id.fragment_containt,f1).commit();
                         break;
                     case 1:
-                        Fragment f2=new Fragment_Market_Information();
+                        Fragment f2=new Fragment_new_scc();
                         FragmentTransaction ft2=getFragmentManager().beginTransaction();
                         ft2.replace(R.id.fragment_containt,f2).commit();
+                       // getFragmentManager().beginTransaction().replace(R.id.fragment_containt,new Fragment_Market_Information()).commit();
                         break;
                     case 2:
                         Fragment f3=new Fragment_Conversation();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_containt,f3).commit();
                         break;
                     case 3:
-                        Fragment f4=new Fragment_person_information();
+                        f4=new Fragment_person_information();
                         getFragmentManager().beginTransaction().replace(R.id.fragment_containt,f4).commit();
                         break;
                     default:

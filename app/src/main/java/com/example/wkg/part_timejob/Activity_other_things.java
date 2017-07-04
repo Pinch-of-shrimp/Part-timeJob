@@ -1,14 +1,11 @@
 package com.example.wkg.part_timejob;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-
-import cn.jpush.im.android.api.model.UserInfo;
 
 /**
  * Created by Administrator on 2017/7/3.
@@ -50,6 +47,16 @@ public class Activity_other_things extends AppCompatActivity {
                 break;
             case "comunicate":
                 getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_new_comunicate()).commit();
+                break;
+            case "search":
+                getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_search()).commit();
+                break;
+            case "detail_main":
+                getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_detail_main()).commit();
+                break;
+            case "myfavorite":
+                getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_myfavorite()).commit();
+                break;
             default:
                 break;
         }

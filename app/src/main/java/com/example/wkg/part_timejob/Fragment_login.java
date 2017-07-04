@@ -288,6 +288,7 @@ public class Fragment_login extends Fragment implements View.OnClickListener {
                         editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnqiue_id());
                         editor.apply();
                         startActivity(new Intent(getContext(),MainActivity.class));
+                        ((application)getActivity().getApplication()).setId(resp.getUser().getUnqiue_id());
                     }
                 }
                 else

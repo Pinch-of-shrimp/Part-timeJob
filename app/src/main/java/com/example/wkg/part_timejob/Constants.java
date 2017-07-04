@@ -17,6 +17,7 @@ public class Constants {
     public static final String IS_LOGGED_IN = "isLoggedIn";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
+    public static final String OPERATIONADDTOFAVORITE="updateCollection";
     public static final String TOKEN="token";
     public static final int RECIVIRETEXT=1;
     public static final int RECIVERIMAGE=2;
@@ -26,7 +27,10 @@ public class Constants {
     public static final String OPERATIONNEARJOB="nearJob";
     public static final String OPERATIONWEEKENDJOB="weekendJob";
     public static final String OPERATIONTIONRECOMMONDJOB="recommendJob";
+    public static final String OPERATIONSEARCHJOB="searchJob";
     public static final String OPEARTIONALLJIOB="allJob";
     public static final String UNIQUE_ID = "unique_id";
+    public static final String OPERATIONGETALLFAVORITE="searchCollection";
     public static final String TAG = "Learn2Crack";
+    public static final String OPERATIONFEEDBACK="feedback";
 }

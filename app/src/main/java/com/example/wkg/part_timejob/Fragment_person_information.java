@@ -1,25 +1,43 @@
 package com.example.wkg.part_timejob;
 
+import android.*;
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wkg.part_timejob.Splash.CircleImageView;
 import com.example.wkg.part_timejob.Splash.Perinfor;
 import com.example.wkg.part_timejob.Splash.PerinforAdapter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.wkg.part_timejob.R.id.btn_open_camera;
 
 /**
  * Created by WKG on 2017/6/24.
@@ -30,6 +48,17 @@ public class Fragment_person_information extends Fragment implements OnClickList
     private ListView lv_group_one;
     private SharedPreferences pref;
     private ListView lv_group_two;
+    private CircleImageView civ_photo;
+    private static final int CODE_GALLERY_REQUEST = 0xa0;
+    private static final int CODE_CAMERA_REQUEST = 0xa1;
+    private static final int CODE_RESULT_REQUEST = 0xa2;
+    private static final int CAMERA_PERMISSIONS_REQUEST_CODE = 0x03;
+    private static final int STORAGE_PERMISSIONS_REQUEST_CODE = 0x04;
+    private File fileUri = new File(Environment.getExternalStorageDirectory().getPath() + "/photo.jpg");
+    private File fileCropUri = new File(Environment.getExternalStorageDirectory().getPath() + "/crop_photo.jpg");
+    private Uri imageUri;
+    private Uri cropImageUri;
+
     @Nullable
     /*
     给listview添加内容first
@@ -47,6 +76,13 @@ public class Fragment_person_information extends Fragment implements OnClickList
         tv_register= (TextView) view.findViewById(R.id.tv_register);
         lv_group_one= (ListView) view.findViewById(R.id.lv_group_one);
         lv_group_two= (ListView) view.findViewById(R.id.lv_group_two);
+        civ_photo= (CircleImageView) view.findViewById(R.id.civ_chosephoto);
+        civ_photo.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopWindow(v);
+            }
+        });
         pref=getActivity().getPreferences(0);
         tv_register.setOnClickListener(this);
         if(pref.getBoolean(Constants.IS_LOGGED_IN,true)) {
@@ -107,6 +143,9 @@ public class Fragment_person_information extends Fragment implements OnClickList
                         startActivity(intent);
                         break;
                     case 2:
+                        Intent intent1=new Intent(getActivity(),Activity_other_things.class);
+                        intent1.putExtra("type","myfavorite");
+                        startActivity(intent1);
                         break;
                     case 3:
                         break;
@@ -123,6 +162,8 @@ public class Fragment_person_information extends Fragment implements OnClickList
                     case 0:
                         break;
                     case 1:
+                        Intent intent2 = new Intent(Intent.ACTION_CALL,Uri.parse("tel:10000"));
+                        startActivity(intent2);
                         break;
                     case 2:
                         Intent intent=new Intent(getActivity(),Activity_other_things.class);
@@ -136,6 +177,144 @@ public class Fragment_person_information extends Fragment implements OnClickList
         });
 
     }
+    PopupWindow popupWindow;
+    private void showPopWindow(View view)
+    {
+        View contentview=LayoutInflater.from(getContext()).inflate(R.layout.popwindow_chosephoto,null);
+        Button btn_opencream= (Button) contentview.findViewById(R.id.btn_open_camera);
+        Button btn_openblum= (Button) contentview.findViewById(R.id.btn_chose_cancel);
+        Button btn_cancel= (Button) contentview.findViewById(R.id.btn_choose_img);
+        btn_cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        btn_opencream.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoObtainCameraPermission();
+            }
+        });
+        btn_cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoObtainStoragePermission();
+            }
+        });
+        popupWindow=new PopupWindow(contentview, Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT,true);
+        popupWindow.setTouchable(true);
+        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+        popupWindow.showAsDropDown(view);
+    }
+    public void autoObtainCameraPermission()
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.CAMERA)) {
+                ToastUtils.showShort(getContext(), "您已经拒绝过一次");
+            }
+            ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_PERMISSIONS_REQUEST_CODE);
+        } else {//有权限直接调用系统相机拍照
+            if (hasSdcard()) {
+                imageUri = Uri.fromFile(fileUri);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                    imageUri = FileProvider.getUriForFile(getContext(), "com.zz.fileprovider", fileUri);//通过FileProvider创建一个content类型的Uri
+                PhotoUtils.takePicture(getActivity(), imageUri, CODE_CAMERA_REQUEST);
+            } else {
+                ToastUtils.showShort(getContext(), "设备没有SD卡！");
+            }
+        }
+    }
+
+    private boolean hasSdcard() {
+        String state = Environment.getExternalStorageState();
+        return state.equals(Environment.MEDIA_MOUNTED);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case CAMERA_PERMISSIONS_REQUEST_CODE: {//调用系统相机申请拍照权限回调
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (hasSdcard()) {
+                        imageUri = Uri.fromFile(fileUri);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                            imageUri = FileProvider.getUriForFile(getContext(), "com.zz.fileprovider", fileUri);//通过FileProvider创建一个content类型的Uri
+                        PhotoUtils.takePicture(getActivity(), imageUri, CODE_CAMERA_REQUEST);
+                    } else {
+                        ToastUtils.showShort(getContext(), "设备没有SD卡！");
+                    }
+                } else {
+
+                    ToastUtils.showShort(getContext(), "请允许打开相机！！");
+                }
+                break;
+
+
+            }
+            case STORAGE_PERMISSIONS_REQUEST_CODE://调用系统相册申请Sdcard权限回调
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    PhotoUtils.openPic(getActivity(), CODE_GALLERY_REQUEST);
+                } else {
+
+                    ToastUtils.showShort(getContext(), "请允许打操作SDCard！！");
+                }
+                break;
+        }
+    }
+    private static final int output_X = 480;
+    private static final int output_Y = 480;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == getActivity().RESULT_OK) {
+            switch (requestCode) {
+                case CODE_CAMERA_REQUEST://拍照完成回调
+                    cropImageUri = Uri.fromFile(fileCropUri);
+                    PhotoUtils.cropImageUri(getActivity(), imageUri, cropImageUri, 1, 1, output_X, output_Y, CODE_RESULT_REQUEST);
+                    break;
+                case CODE_GALLERY_REQUEST://访问相册完成回调
+                    if (hasSdcard()) {
+                        cropImageUri = Uri.fromFile(fileCropUri);
+                        Uri newUri = Uri.parse(PhotoUtils.getPath(getContext(), data.getData()));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+                            newUri = FileProvider.getUriForFile(getContext(), "com.zz.fileprovider", new File(newUri.getPath()));
+                        PhotoUtils.cropImageUri(getActivity(), newUri, cropImageUri, 1, 1, output_X, output_Y, CODE_RESULT_REQUEST);
+                    } else {
+                        ToastUtils.showShort(getContext(), "设备没有SD卡！");
+                    }
+                    break;
+                case CODE_RESULT_REQUEST:
+                    Bitmap bitmap = PhotoUtils.getBitmapFromUri(cropImageUri, getContext());
+                    if (bitmap != null) {
+                        showImages(bitmap);
+                    }
+                    break;
+            }
+        }
+    }
+
+    private void showImages(Bitmap bitmap) {
+        civ_photo.setImageBitmap(bitmap);
+    }
+    private void autoObtainStoragePermission() {
+        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSIONS_REQUEST_CODE);
+        } else {
+            PhotoUtils.openPic(getActivity(), CODE_GALLERY_REQUEST);
+        }
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId())

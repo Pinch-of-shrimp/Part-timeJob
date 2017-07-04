@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.wkg.part_timejob.Job;
 import com.example.wkg.part_timejob.R;
+import com.example.wkg.part_timejob.conversation_rv_adapter;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ import java.util.List;
 
 public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> {
     private List<fmain> fmainList;
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    MyItemClickListener mItemClickListener;
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         /*
         需要用到的变量名
          */
@@ -28,8 +30,8 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
         TextView jobtime;
         TextView jobsalary;
         TextView jobgettype;
-
-        public ViewHolder(View itemView) {
+        private MyItemClickListener myItemClickListener;
+        public ViewHolder(View itemView, MyItemClickListener listener) {
             super(itemView);
             fmainView=itemView;
             jobname=(TextView)itemView.findViewById(R.id.jobname);
@@ -37,7 +39,20 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
             jobtime=(TextView)itemView.findViewById(R.id.jobtime);
             jobsalary=(TextView)itemView.findViewById(R.id.jobsalary);
             jobgettype=(TextView)itemView.findViewById(R.id.jobgettype);
+            myItemClickListener=listener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if(myItemClickListener!=null)
+            {
+                myItemClickListener.onItemClick(v,getPosition());
+            }
+        }
+    }
+    public interface MyItemClickListener {
+        public void onItemClick(View view,int postion);
     }
     public fmainAdapter(List<fmain> List)
     {
@@ -48,12 +63,13 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
         View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.mainpage_jobitem,parent
                 ,false);
-        final ViewHolder holder=new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view,mItemClickListener);
         /*
         Create by wkg
         7.1
          */
         //添加点击事件
+         /*
         holder.fmainView.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -62,8 +78,12 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
                 fmain fmain_item=fmainList.get(posotion);
                 Toast.makeText(v.getContext(),"你点击了这里"+fmain_item.GetJobname(),Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
         return holder;
+    }
+
+    public void setmItemClickListener(MyItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
     }
 
     @Override

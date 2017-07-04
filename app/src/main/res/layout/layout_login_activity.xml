@@ -7,7 +7,7 @@
         android:id="@+id/tb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/greenyellow"
+        android:background="@color/adapteritem_name_color"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">

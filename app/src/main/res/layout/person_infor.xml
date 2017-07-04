@@ -16,7 +16,7 @@
 
         <com.example.wkg.part_timejob.Splash.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/circleImageView"
+            android:id="@+id/civ_chosephoto"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"

@@ -7,13 +7,14 @@ package com.example.wkg.part_timejob;
 public class User {
     private String name;
     private String email;
-    private String unqiue_id;
+    private String unique_id;
     private String password;
     private String old_password;
     private String new_password;
     private String new_password_verify;
     private String code;
     private String city;
+
 
     public void setCity(String city) {
         this.city = city;
@@ -30,7 +31,7 @@ public class User {
     }
     public String getUnqiue_id()
     {
-        return unqiue_id;
+        return unique_id;
     }
     public void setName(String n)
     {

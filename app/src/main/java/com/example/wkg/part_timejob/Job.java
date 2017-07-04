@@ -26,6 +26,15 @@ public class Job {
     private String description;
     private String require;
     private String workcontent;
+    private String job_id;
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
+
+    public String getJob_id() {
+        return job_id;
+    }
 
     public String getDescription() {
         return description;
