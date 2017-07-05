@@ -6,49 +6,85 @@
     <LinearLayout android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical">
-        <include layout="@layout/mainpage_jobitem"></include>
-        <TextView
+        <RelativeLayout android:id="@+id/mUpdateHeaderContainer"
+            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:minHeight="75.0dip">
+            <include layout="@layout/mainpage_jobitem"></include>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="职位描述："
-            android:textSize="26dp"
-            android:textColor="@color/black"/>
-        <TextView
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="职位描述："
+                android:textSize="22dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:id="@+id/tv_detial_descrip"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:id="@+id/tv_detial_descrip"/>
-        <TextView
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="薪酬福利："
+                android:textSize="22dp"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:id="@+id/tv_detial_salary"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="薪酬福利："
-            android:textSize="26dp"
-            android:textColor="@color/black" />
-        <TextView
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="工作时间："
+                android:textSize="22dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:id="@+id/tv_detial_jobtime"
+                android:textSize="18dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:id="@+id/tv_detial_salary"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="工作时间："
-            android:textSize="26dp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:id="@+id/tv_detial_jobtime"
-            android:textSize="18dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="工作地点："
-            android:textSize="26dp"
-            android:textColor="@color/black"/>
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="工作地点："
+                android:textSize="22dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,31 +101,43 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:id="@+id/tv_detial_jobpalce"
-                android:textSize="18dp"
+                android:textSize="16dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
-
-        <TextView
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="面试地点："
-            android:textSize="26dp"
-            android:textColor="@color/black"/>
-        <TextView
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="面试地点："
+                android:textSize="22dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:id="@+id/tv_detial_interview"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:textSize="18dp"
-            android:id="@+id/tv_detial_interview"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="更多职位："
-            android:textSize="26dp"
-            android:textColor="@color/black"/>
-
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="更多职位："
+                android:textSize="22dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_fmain_recycler"
             android:layout_width="match_parent"
@@ -106,6 +154,7 @@
                 android:id="@+id/button_favorite"
                 android:layout_width="90.0dip"
                 android:layout_height="fill_parent">
+
                 <ImageView
                     android:layout_gravity="center_vertical"
                     android:id="@+id/iv_button_favorite_image"
@@ -171,4 +220,5 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+
 

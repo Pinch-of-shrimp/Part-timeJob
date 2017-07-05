@@ -62,7 +62,7 @@ public class conversation_rv_adapter extends RecyclerView.Adapter<conversation_r
             tv_name.setText(data.get(position).getTheName());
             tv_data.setText(data.get(position).getTheData());
             tv_conversation.setText(data.get(position).getTheConversation());
-            iv_photo.setImageResource(R.mipmap.user);
+            iv_photo.setImageResource(R.drawable.secondphoto);
 
         }
 

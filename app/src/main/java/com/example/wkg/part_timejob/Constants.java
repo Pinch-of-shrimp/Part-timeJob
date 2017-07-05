@@ -30,7 +30,11 @@ public class Constants {
     public static final String OPERATIONSEARCHJOB="searchJob";
     public static final String OPEARTIONALLJIOB="allJob";
     public static final String UNIQUE_ID = "unique_id";
+    public static final String OPERATIONUPDATERESUME="updateResume";
     public static final String OPERATIONGETALLFAVORITE="searchCollection";
     public static final String TAG = "Learn2Crack";
     public static final String OPERATIONFEEDBACK="feedback";
+    public static final String OPERATIONAPPLY="applyEmploy";
+    public static final String OPERATIONGETJOBSTATE="getJobState";
+    public static final String OPERATIONSCC="getAnalysis";
 }

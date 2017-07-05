@@ -1,10 +1,14 @@
 package com.example.wkg.part_timejob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
@@ -40,15 +44,28 @@ public class Activity_MainMap extends AppCompatActivity implements LocationSourc
     OnLocationChangedListener mListener;
     AMapLocationClient mlocationClient;
     AMapLocationClientOption mLocationOption;
+    Toolbar tb_map;
     boolean flag=true;
     private MapView mainMAP;
     private AMap aMap;
+    TextView tv_map;
     private MyLocationStyle myLocationStyle;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
         mainMAP= (MapView)findViewById(R.id.main_maps);
+        tb_map= (Toolbar) findViewById(R.id.tb_map);
+        tv_map= (TextView) findViewById(R.id.tv_map);
+        setSupportActionBar(tb_map);
+        tb_map.setTitle("地图");
+        tb_map.setNavigationIcon(R.drawable.back_to_graph);
+        tb_map.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),MainActivity.class));
+            }
+        });
         mainMAP.onCreate(savedInstanceState);
         if(myLocationStyle==null)
         {

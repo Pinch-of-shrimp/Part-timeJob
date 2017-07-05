@@ -14,7 +14,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="麦当劳兼职"
-        android:textSize="24dp" />
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,6 +66,7 @@
             android:text="150元/天"
             android:layout_gravity="center_vertical"
             android:textSize="14dp"
+            android:textColor="@color/orangered"
             android:layout_marginLeft="10dp"/>
         <View
             android:id="@+id/view_line"
@@ -79,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="日结"
+            android:textColor="@color/black"
             android:layout_marginLeft="15dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -136,6 +136,9 @@ public class Fragment_person_information extends Fragment implements OnClickList
                 switch (position)
                 {
                     case 0:
+                        Intent intent3=new Intent(getActivity(),Activity_other_things.class);
+                        intent3.putExtra("type","myjob");
+                        startActivity(intent3);
                         break;
                     case 1:
                         Intent intent=new Intent(getActivity(),Activity_other_things.class);
@@ -160,6 +163,7 @@ public class Fragment_person_information extends Fragment implements OnClickList
                 switch (position)
                 {
                     case 0:
+
                         break;
                     case 1:
                         Intent intent2 = new Intent(Intent.ACTION_CALL,Uri.parse("tel:10000"));

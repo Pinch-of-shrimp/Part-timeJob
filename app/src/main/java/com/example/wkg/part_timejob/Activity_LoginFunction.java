@@ -29,7 +29,7 @@ public class Activity_LoginFunction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login_activity);
         tb_login= (Toolbar) findViewById(R.id.tb_login);
-        tb_login.setNavigationIcon(getResources().getDrawable(R.drawable.back_graph));
+        tb_login.setNavigationIcon(getResources().getDrawable(R.drawable.back_to_graph));
         setSupportActionBar(tb_login);
         tb_login.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,16 +40,24 @@ public class Activity_LoginFunction extends AppCompatActivity {
         radioGroup= (RadioGroup) findViewById(R.id.rg_login);
         rb_login= (RadioButton) radioGroup.findViewById(R.id.rb_login);
         rb_register= (RadioButton) radioGroup.findViewById(R.id.rb_register);
+        rb_login.setBackgroundResource(R.drawable.login_2);
+        rb_register.setBackgroundResource(R.drawable.register1);
+        Fragment f1=new Fragment_login();
+        getFragmentManager().beginTransaction().replace(R.id.fl_login_contain,f1).commit();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId)
                 {
                     case R.id.rb_login:
+                        rb_login.setBackgroundResource(R.drawable.login_2);
+                        rb_register.setBackgroundResource(R.drawable.register1);
                         Fragment f1=new Fragment_login();
                         getFragmentManager().beginTransaction().replace(R.id.fl_login_contain,f1).commit();
                         break;
                     case R.id.rb_register:
+                        rb_login.setBackgroundResource(R.drawable.login_1);
+                        rb_register.setBackgroundResource(R.drawable.register2);
                         Fragment f2=new Fragment_register();
                         getFragmentManager().beginTransaction().replace(R.id.fl_login_contain,f2).commit();
                         break;

@@ -128,11 +128,11 @@ public class Fragment_detail_main extends Fragment {
 
     private void applyforjob() {
         Retrofit retrofit=new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        RequestInterface_collect requestInterfaceCollect=retrofit.create(RequestInterface_collect.class);
+        RequestInterface_apply requestInterfaceCollect=retrofit.create(RequestInterface_apply.class);
         final ServerRequest request=new ServerRequest();
         request.setUser_id(user_id);
         request.setJob_id(message_id);
-        request.setOperation(Constants.OPERATIONADDTOFAVORITE);
+        request.setOperation(Constants.OPERATIONAPPLY);
         Call<ServerResponse>responseCall=requestInterfaceCollect.operation(request);
         responseCall.enqueue(new Callback<ServerResponse>() {
             @Override

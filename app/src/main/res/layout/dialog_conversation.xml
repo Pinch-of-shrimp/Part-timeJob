@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="511dp"
         android:id="@+id/rv_conversation_dialog"
+        android:background="@color/white"
         />
 
     <LinearLayout
@@ -17,26 +18,27 @@
 
         <EditText
             android:id="@+id/et_conversation_dialog"
-            android:layout_width="wrap_content"
+            android:layout_width="225dp"
             android:layout_height="match_parent"
+            android:background="@drawable/conversation_frage"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Name" />
 
         <ImageButton
             android:id="@+id/ibtn_sendemoji_dialog"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35"
-            android:src="@mipmap/home"
-            />
+            android:layout_width="71dp"
+            android:layout_height="53dp"
+            android:background="@drawable/emoji"
+            android:src="@drawable/emoji" />
 
         <ImageButton
             android:id="@+id/ibtn_sendMessage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/login_btn"
             android:layout_weight="1.00"
-            android:src="@mipmap/mail"
+            android:src="@mipmap/mail2"
              />
     </LinearLayout>
 </LinearLayout>

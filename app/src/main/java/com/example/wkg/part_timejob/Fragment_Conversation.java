@@ -59,7 +59,9 @@ public class Fragment_Conversation extends Fragment {
         View view=inflater.inflate(R.layout.fragment_conversation,container,false);
         rv_conversation= (RecyclerView) view.findViewById(R.id.rv_conversation);
         tb_conversation= (Toolbar) view.findViewById(R.id.tb_conversation);
+        tb_conversation.setTitle("消息");
         setHasOptionsMenu(true);
+        tb_conversation.setTitleMargin(50,50,50,50);
         datas=new ArrayList<>();
         data_show_rv=new ArrayList<Message>();
         ((AppCompatActivity)getActivity()).setSupportActionBar(tb_conversation);

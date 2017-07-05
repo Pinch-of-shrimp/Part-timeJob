@@ -15,6 +15,61 @@ public  class ServerRequest {
     private String content;
     private String user_id;
     private String job_id;
+    private String name;
+    private String sex;
+    private String birthday;
+    private String isStudent;
+    private String realname;
+    private String school;
+    private String major;
+    private String eduStartDate;
+    private String tag;
+    private String state;
+    private String statement;
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setEduStartDate(String eduStartDate) {
+        this.eduStartDate = eduStartDate;
+    }
+
+    public void setIsStudent(String isStudent) {
+        this.isStudent = isStudent;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setStatement(String statement) {
+        this.statement = statement;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public void setJob_id(String job_id) {
         this.job_id = job_id;

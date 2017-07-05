@@ -8,11 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
+        android:layout_gravity="center"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_conversation"
         android:layout_width="match_parent"
+        android:background="@drawable/conversationbackground"
         android:layout_height="match_parent" />
 </LinearLayout>

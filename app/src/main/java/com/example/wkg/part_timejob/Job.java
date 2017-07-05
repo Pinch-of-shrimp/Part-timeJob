@@ -12,7 +12,7 @@ public class Job {
     private String lv_worktype;
     private String lv_peoplenum;
     private String lv_description;
-    private String lv_place;
+    private String place;
     private String city;
     private String job;
     private String province;
@@ -27,6 +27,52 @@ public class Job {
     private String require;
     private String workcontent;
     private String job_id;
+    private String url;
+    private String companyname;
+    private String tags;
+    private String type;
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+        worktype=type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public void setJob_id(String job_id) {
         this.job_id = job_id;
@@ -148,8 +194,8 @@ public class Job {
         return lv_peoplenum;
     }
 
-    public String getLv_place() {
-        return lv_place;
+    public String getPlace() {
+        return place;
     }
 
     public String getLv_salary() {
@@ -179,8 +225,8 @@ public class Job {
         this.lv_peoplenum = lv_peoplenum;
     }
 
-    public void setLv_place(String lv_place) {
-        this.lv_place = lv_place;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public void setLv_salary(String lv_salary) {

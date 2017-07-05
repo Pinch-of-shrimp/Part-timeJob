@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background=""
     >
 
     <ImageView
         android:id="@+id/iv_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@mipmap/user" />
+        app:srcCompat="@drawable/secondphoto" />
 
     <TextView
         android:id="@+id/tv_thename"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textColor="@color/black"
+        android:textSize="20dp"
         android:layout_toEndOf="@+id/iv_photo"
         android:text="TextView" />
 

@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5.0dp"
             android:layout_marginTop="10.0dp"
-            android:background="@drawable/my_feedback_button"
+            android:background="@drawable/login_btn"
             android:padding="10.0dp"
             android:text="@string/submit"
             android:textColor="@color/white"

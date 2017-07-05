@@ -18,7 +18,18 @@ public class ServerResponse {
     private ArrayList<Job>recommendJob;
     private ArrayList<Job>searchJob;
     private ArrayList<Job>searchCollection;
-   // private String hotJob;
+    private ArrayList<Job>getJobState;
+    private ArrayList<Job>getAnalysis;
+
+    public ArrayList<Job> getGetAnalysis() {
+        return getAnalysis;
+    }
+
+    public ArrayList<Job> getGetJobState() {
+        return getJobState;
+    }
+
+    // private String hotJob;
 
     public ArrayList<Job> getSearchCollection() {
         return searchCollection;
