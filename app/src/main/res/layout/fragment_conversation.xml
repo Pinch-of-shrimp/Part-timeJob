@@ -15,6 +15,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_conversation"
         android:layout_width="match_parent"
-        android:background="@drawable/conversationbackground"
+        android:background="@drawable/background_for_conversation"
         android:layout_height="match_parent" />
 </LinearLayout>

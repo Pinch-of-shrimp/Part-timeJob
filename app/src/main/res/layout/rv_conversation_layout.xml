@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background=""
+    android:background="@drawable/user_frage"
     >
 
     <ImageView
         android:id="@+id/iv_photo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/secondphoto" />
+        app:srcCompat="@drawable/secondphoto"
+        android:layout_marginStart="24dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/tv_thename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:layout_toEndOf="@+id/iv_photo"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/iv_photo" />
 
     <TextView
         android:id="@+id/tv_theconversation"

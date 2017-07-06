@@ -26,6 +26,51 @@ public  class ServerRequest {
     private String tag;
     private String state;
     private String statement;
+    private String jobtitle,startdate,enddate,worktime,salary,salarytyep,worktype,peoplenumb,description,require,workcontent;
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
+
+    public void setJobtitle(String jobtitle) {
+        this.jobtitle = jobtitle;
+    }
+
+    public void setPeoplenumb(String peoplenumb) {
+        this.peoplenumb = peoplenumb;
+    }
+
+    public void setRequire(String require) {
+        this.require = require;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public void setSalarytyep(String salarytyep) {
+        this.salarytyep = salarytyep;
+    }
+
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
+
+    public void setWorkcontent(String workcontent) {
+        this.workcontent = workcontent;
+    }
+
+    public void setWorktime(String worktime) {
+        this.worktime = worktime;
+    }
+
+    public void setWorktype(String worktype) {
+        this.worktype = worktype;
+    }
 
     public void setState(String state) {
         this.state = state;

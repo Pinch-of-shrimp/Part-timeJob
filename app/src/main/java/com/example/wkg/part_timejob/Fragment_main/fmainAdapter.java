@@ -104,7 +104,7 @@ public class fmainAdapter extends RecyclerView.Adapter<fmainAdapter.ViewHolder> 
     {
         fmain data;
         if(job.getStartdate()!=null) {
-            data = new fmain(job.getJob(), job.getCity(), job.getStartdate() + "-" + job.getEnddate(), job.getSalary() + "元", job.getSalarytype());
+            data = new fmain(job.getJob(), job.getCity(), job.getStartdate() + "~" + job.getEnddate(), job.getSalary() + "元", job.getSalarytype());
         }
         else
         {

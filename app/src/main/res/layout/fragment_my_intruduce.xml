@@ -18,7 +18,7 @@
                     android:layout_width="50.0dip"
                     android:layout_height="50.0dip"
                     android:layout_margin="10.0dip"
-                    android:src="@drawable/main_tab_item_icon4"
+                    android:src="@drawable/myphoto"
                     android:layout_centerVertical="true" />
                 <ImageView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

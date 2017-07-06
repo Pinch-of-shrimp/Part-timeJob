@@ -63,8 +63,8 @@ public class Fragment_person_information extends Fragment implements OnClickList
     /*
     给listview添加内容first
      */
-    private String[] group_one={"我的兼职","我的简历","我的收藏","我的偏好"};
-    private String[] group_two={"我要找人","联系客服","投诉和反馈"};
+    private String[] group_one={"我的兼职","我的简历","我的收藏"};
+    private String[] group_two={"招聘发布","联系客服","投诉和反馈"};
     //private ArrayList<String>data1;
     //private ArrayList<String>data2;
     //个人信息页
@@ -103,23 +103,21 @@ public class Fragment_person_information extends Fragment implements OnClickList
         /*
         第一条数据
          */
-        Perinfor lvone_1=new Perinfor(group_one[0].toString(),R.drawable.resume);
+        Perinfor lvone_1=new Perinfor(group_one[0].toString(),R.drawable.myjob2);
         perinfors_one.add(lvone_1);
-        Perinfor lvone_2=new Perinfor(group_one[1].toString(),R.drawable.more);
+        Perinfor lvone_2=new Perinfor(group_one[1].toString(),R.drawable.myintruduce2);
         perinfors_one.add(lvone_2);
-        Perinfor lvone_3=new Perinfor(group_one[2].toString(),R.drawable.more);
+        Perinfor lvone_3=new Perinfor(group_one[2].toString(),R.drawable.mycollect2);
         perinfors_one.add(lvone_3);
-        Perinfor lvone_4=new Perinfor(group_one[3].toString(),R.drawable.more);
-        perinfors_one.add(lvone_4);
         /*
         第二条数据
          */
 
-        Perinfor lvtwo_1=new Perinfor(group_two[0].toString(),R.drawable.resume);
+        Perinfor lvtwo_1=new Perinfor(group_two[0].toString(),R.drawable.pushjob2);
         perinfors_two.add(lvtwo_1);
-        Perinfor lvtwo_2=new Perinfor(group_two[1].toString(),R.drawable.more);
+        Perinfor lvtwo_2=new Perinfor(group_two[1].toString(),R.drawable.connecttokefu2);
         perinfors_two.add(lvtwo_2);
-        Perinfor lvtwo_3=new Perinfor(group_two[2].toString(),R.drawable.more);
+        Perinfor lvtwo_3=new Perinfor(group_two[2].toString(),R.drawable.feedback2);
         perinfors_two.add(lvtwo_3);
 //        group1=new
 //        data1=new ArrayList<>();
@@ -163,7 +161,9 @@ public class Fragment_person_information extends Fragment implements OnClickList
                 switch (position)
                 {
                     case 0:
-
+                        Intent intent3=new Intent(getActivity(),Activity_other_things.class);
+                        intent3.putExtra("type","push_information");
+                        startActivity(intent3);
                         break;
                     case 1:
                         Intent intent2 = new Intent(Intent.ACTION_CALL,Uri.parse("tel:10000"));

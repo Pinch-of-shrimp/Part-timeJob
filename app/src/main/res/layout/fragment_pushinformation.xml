@@ -4,19 +4,21 @@
 
     <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp">
         <LinearLayout android:orientation="vertical"
             android:background="@color/line_color"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:weightSum="1">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="30dp"
-                android:text="请认真招聘信息"
+                android:text="请认真填写招聘信息"
                 android:layout_gravity="center_horizontal|center_vertical"/>
             <LinearLayout android:orientation="vertical"
                 android:background="@color/white"
@@ -24,42 +26,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10.0dip">
 
-                <RelativeLayout
-                    android:layout_width="fill_parent"
+                <RelativeLayout android:layout_width="fill_parent"
                     android:layout_height="50.0dip"
                     android:layout_marginLeft="@dimen/g_widget_margin_2x"
                     android:layout_marginRight="@dimen/g_widget_margin_2x">
-
-                    <TextView
-                        android:id="@+id/companyname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="公司名称"
+                    <TextView android:textSize="@dimen/text_size_14sp"
                         android:textColor="@color/resume_key_color"
-                        android:textSize="@dimen/text_size_14sp" />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/companyname"
+                        android:id="@+id/companyname"
+                        android:text="公司名称"
+                        android:layout_centerVertical="true" />
+                    <TextView android:textColor="@color/red"
                         android:paddingBottom="10.0dip"
-                        android:text="*"
-                        android:textColor="@color/red" />
-
-                    <EditText
-                        android:id="@+id/et_mconpany"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:background="@color/white"
+                        android:text="*"
+                        android:layout_toRightOf="@+id/companyname"
+                        android:layout_centerVertical="true" />
+                    <EditText android:textSize="@dimen/text_size_14sp"
                         android:gravity="right"
+                        android:id="@+id/ev_con_name"
+                        android:background="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:hint="请输入公司名称"
-                        android:maxLength="20"
                         android:singleLine="true"
-                        android:textSize="@dimen/text_size_14sp" />
+                        android:maxLength="20"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true" />
                 </RelativeLayout>
 
                 <RelativeLayout android:background="@color/line_color"
@@ -72,7 +67,7 @@
                     android:layout_marginLeft="@dimen/g_widget_margin_2x"
                     android:layout_marginRight="@dimen/g_widget_margin_2x">
                     <TextView android:textColor="@color/resume_key_color"
-                        android:id="@+id/mSex"
+                        android:id="@+id/commSex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="兼职名称"
@@ -82,11 +77,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*"
-                        android:layout_toRightOf="@id/mSex"
+                        android:layout_toRightOf="@id/commSex"
                         android:layout_centerVertical="true" />
                     <EditText android:textSize="@dimen/text_size_14sp"
                         android:gravity="right"
-                        android:id="@+id/et_mName"
+                        android:id="@+id/com_job_name"
                         android:background="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -95,39 +90,50 @@
                         android:maxLength="20"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="50.0dip"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="11dp"
+                        android:layout_marginLeft="@dimen/g_widget_margin_2x"
+                        android:layout_marginRight="@dimen/g_widget_margin_2x">
+
+                        <TextView
+                            android:id="@+id/tv_salary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text=""
+                            android:textColor="@color/resume_key_color" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/tv_salary"
+                            android:paddingBottom="10.0dip"
+                            android:text=""
+                            android:textColor="@color/red" />
+
+                        <EditText
+                            android:id="@+id/et_e12v_salary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@color/white"
+                            android:gravity="right"
+                            android:hint="请填写薪资待遇"
+                            android:maxLength="20"
+                            android:singleLine="true"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </RelativeLayout>
                 </RelativeLayout>
                 <RelativeLayout android:background="@color/line_color"
                     android:layout_width="fill_parent"
                     android:layout_height="0.5dip" />
-                <RelativeLayout android:layout_width="fill_parent"
-                    android:layout_height="50.0dip"
-                    android:layout_marginLeft="@dimen/g_widget_margin_2x"
-                    android:layout_marginRight="@dimen/g_widget_margin_2x">
-                    <TextView android:textColor="@color/resume_key_color"
-                        android:id="@+id/tv_salary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="薪资"
-                        android:layout_centerVertical="true" />
-                    <TextView android:textColor="@color/red"
-                        android:paddingBottom="10.0dip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_toRightOf="@id/tv_salary"
-                        android:layout_centerVertical="true" />
-                    <EditText android:textSize="@dimen/text_size_14sp"
-                        android:gravity="right"
-                        android:id="@+id/et_ev_salary"
-                        android:background="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="请填写薪资待遇"
-                        android:singleLine="true"
-                        android:maxLength="20"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
-                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout android:orientation="vertical"
@@ -141,7 +147,7 @@
                     android:layout_marginRight="@dimen/g_widget_margin_2x">
                     <TextView android:textSize="@dimen/text_size_14sp"
                         android:textColor="@color/resume_key_color"
-                        android:id="@+id/mStudent"
+                        android:id="@+id/com_gettype"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="结算方式"
@@ -151,18 +157,18 @@
                         android:paddingBottom="10.0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="*" android:layout_toRightOf="@+id/mStudent"
+                        android:text="*" android:layout_toRightOf="@+id/com_gettype"
                         android:layout_centerVertical="true" />
                     <RadioGroup android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true">
-                        <RadioButton android:id="@+id/mIsStudent"
+                        <RadioButton android:id="@+id/com_day"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:text="日结" />
-                        <RadioButton android:id="@+id/mNotStudent"
+                        <RadioButton android:id="@+id/com_month"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="月结" />
@@ -177,7 +183,7 @@
                     android:layout_marginRight="@dimen/g_widget_margin_2x">
                     <TextView android:textSize="@dimen/text_size_14sp"
                         android:textColor="@color/resume_key_color"
-                        android:id="@+id/mRealName"
+                        android:id="@+id/com_job_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="职位类型"
@@ -188,11 +194,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*"
-                        android:layout_toRightOf="@id/mRealName"
+                        android:layout_toRightOf="@id/com_job_type"
                         android:layout_centerVertical="true" />
                     <EditText android:textSize="@dimen/text_size_14sp"
                         android:gravity="right"
-                        android:id="@+id/et_mRealNameEditText"
+                        android:id="@+id/et_com_job_type"
                         android:background="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -205,29 +211,7 @@
                 <RelativeLayout android:background="@color/line_color"
                     android:layout_width="fill_parent"
                     android:layout_height="0.5dip" />
-                <RelativeLayout android:layout_width="fill_parent"
-                    android:layout_height="50.0dip"
-                    android:layout_marginLeft="@dimen/g_widget_margin_2x"
-                    android:layout_marginRight="@dimen/g_widget_margin_2x">
-                    <TextView android:textSize="@dimen/text_size_14sp"
-                        android:textColor="@color/resume_key_color"
-                        android:id="@+id/mSchool"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="结算方式"
-                        android:layout_centerVertical="true" />
-                    <EditText android:textSize="@dimen/text_size_14sp"
-                        android:gravity="right"
-                        android:id="@+id/et_mSchoolName"
-                        android:background="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="请输入结算方式"
-                        android:singleLine="true"
-                        android:maxLength="20"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
-                </RelativeLayout>
+
                 <RelativeLayout android:background="@color/line_color"
                     android:layout_width="fill_parent"
                     android:layout_height="0.5dip" />
@@ -238,14 +222,14 @@
                     android:layout_marginRight="@dimen/g_widget_margin_2x">
                     <TextView android:textSize="@dimen/text_size_14sp"
                         android:textColor="@color/resume_key_color"
-                        android:id="@+id/mMajor"
+                        android:id="@+id/needspor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="所需人数"
                         android:layout_centerVertical="true" />
                     <EditText android:textSize="@dimen/text_size_14sp"
                         android:gravity="right"
-                        android:id="@+id/et_mMajorEditText"
+                        android:id="@+id/et_need_person"
                         android:background="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -270,17 +254,18 @@
                         android:layout_height="wrap_content"
                         android:text="工作要求"
                         android:layout_centerVertical="true" />
+
                     <EditText android:textSize="@dimen/text_size_14sp"
                         android:gravity="right"
-                        android:id="@+id/et_mWorkRequirement"
+                        android:id="@+id/ed_job_needs"
                         android:background="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="请输入工作要求"
                         android:singleLine="true"
                         android:maxLength="20"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" />
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true" />
                 </RelativeLayout>
                 <RelativeLayout android:background="@color/line_color"
                     android:layout_width="fill_parent"
@@ -297,7 +282,7 @@
                     android:text="职位描述" />
                 <EditText android:textSize="@dimen/text_size_14sp"
                     android:gravity="top"
-                    android:id="@+id/et_mDeclaration"
+                    android:id="@+id/et_com_descrip"
                     android:background="@color/white"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -326,14 +311,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_save"
-                android:layout_marginTop="10dp"
+                android:text="提交"
+                android:id="@+id/btn_employ_commit"
                 android:background="@drawable/login_btn"
-                android:text="  发布信息  "
-                android:textColor="@color/g_dark_grey"
-                android:layout_gravity="center"
-                android:textSize="26dp"
-                />
+                android:layout_weight="0.41" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

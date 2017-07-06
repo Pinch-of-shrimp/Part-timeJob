@@ -49,7 +49,7 @@ public class Fragment_weekend extends Fragment {
         RequestInterface_infor requestInterface=retrofit.create(RequestInterface_infor.class);
         User user=new User();
         ServerRequest request=new ServerRequest();
-        request.setOperation(Constants.OPERATIONTIONRECOMMONDJOB);
+        request.setOperation(Constants.OPERATIONWEEKENDJOB);
         request.setCity(city);
         request.setProvince(province);
         request.setUser(user);
@@ -61,7 +61,7 @@ public class Fragment_weekend extends Fragment {
                 resp=response.body();
                 if(resp!=null)
                 {
-                    ArrayList<Job>data=resp.getRecommendJob();
+                    ArrayList<Job>data=resp.getWeekendJob();
                     if(data!=null)
                     {
                         for(int i=0;i<data.size();i++)

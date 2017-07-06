@@ -1,5 +1,6 @@
 package com.example.wkg.part_timejob;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -84,6 +85,10 @@ public class Activity_other_things extends AppCompatActivity {
                 toolbar.setTitle("我的兼职");
                 tv_title.setText("我的兼职");
                 getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_myjob()).commit();
+            case "push_information":
+                tv_title.setText("招聘发布");
+                getFragmentManager().beginTransaction().replace(R.id.activity_other_contain,new Fragment_pushinformation()).commit();
+                break;
             default:
                 break;
         }
